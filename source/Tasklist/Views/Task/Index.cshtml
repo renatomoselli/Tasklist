@@ -1,0 +1,49 @@
+﻿@model Tasklist.Web.ViewModels.TaskViewModel
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Tarefa
+        </h1>
+    </section>
+    <!-- Main content -->
+
+    <div class="row">
+        @{ Html.RenderPartial("Task", Model); }
+    </div>
+
+    <section class="content">
+        <!-- Main row -->
+        <div class="row">
+            <div id="table-panel" class="panel-body">
+                <div id="custom-toolbar" class="btn-group">
+                    <div class="form-inline" role="form" style="float: left;">
+                        <button id="btn-new-task" class="btn btn-success btn-labeled fa fa-plus" onclick="Task.newTask();" title="Nova Tarefa">
+                            Nova Tarefa
+                        </button>
+                    </div>
+                </div>
+                <table id="demo-table" class="table-striped" data-striped="true" data-sort-name="Title" data-sort-order="asc" data-cache="false" data-pagination="true" data-page-size="25" data-url="/Task/ListOfTasks" data-id-field="Id" data-show-refresh="true" data-show-columns="true" data-search="false" data-toolbar="#custom-toolbar">
+                    <thead>
+                        <tr>
+                            <th data-field="Id" data-sortable="true">ID</th>
+                            <th data-field="Title" data-sortable="true">Título</th>
+                            <th data-field="Description" data-sortable="true">Descrição</th>
+                            <th data-field="Completed" data-sortable="true" data-formatter="Task.completedFormatter">Status</th>
+                            <th data-field="Id" data-align="center" data-formatter="Task.actionFormatter" data-switchable="false" data-width="100"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!-- /.row (main row) -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/tasklist/js/pages/task.js"></script>
+}

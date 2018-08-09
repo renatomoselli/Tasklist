@@ -1,0 +1,47 @@
+﻿@model Tasklist.Web.ViewModels.TaskViewModel
+@{
+    ViewBag.Title = "Tarefa";
+}
+
+@using (Ajax.BeginForm("Create", "Task", new AjaxOptions
+{
+    UpdateTargetId = "form",
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST"
+}, new { @id = "form", @class = "form-horizontal col-sm-6", @style = "padding-top: 20px; padding-left: 30px;" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Id, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-4">
+            @Html.TextBoxFor(model => model.Id, new { @class = "form-control", @Value = Model == null ? 0 : Model.Id, @readonly = "readonly" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(model => model.Title, new { @class = "form-control", placeholder = "Digite o título." })
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Digite a descrição." })
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Completed, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.CheckBoxFor(model => model.Completed, new { @class = "checkbox" })
+        </div>
+    </div>
+
+    <button id="submitbtn" class="btn btn-primary pull-right" value="Submit" onclick="Task.submit();">Salvar</button>
+}
