@@ -15,7 +15,6 @@ Technologies
 Patterns & Practices
 ---------------------
 * Domain Driven Design (DDD)
-* Test-Driven Development (TDD)
 * Repository Pattern & Generic Repository
 * Unit of Work 
 * Dependency Injection
