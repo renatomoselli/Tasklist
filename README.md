@@ -10,7 +10,6 @@ Technologies
 * AutoMapper
 * Autofac
 * Twitter Bootstrap
-* NUnit
 
 Patterns & Practices
 ---------------------
